@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
-const mongodbURI =
-  process.env.NODE_ENV === "dev" &&
-  `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}`;
+const mongodbURI = `mongodb://${process.env.DB_HOST}/${process.env.DB_NAME}` ;
 
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);

@@ -8,7 +8,12 @@ const { mongoose } = require("./db/conn");
 const Joi = require('joi');
 
 // route imports
-const users = require("./routes/users")
+const users = require("./routes/users");
+
+if (!env.JWT_PRIVATE_KEY) {
+  console.error('Fatal Error : JWT pvt key not defined');
+  process.exit(1)
+}
 
 // Middlewares
 app.use(express.json());

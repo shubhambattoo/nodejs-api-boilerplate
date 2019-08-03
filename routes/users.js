@@ -2,7 +2,7 @@ const _ = require("lodash");
 const { User, validate } = require("../models/user");
 const express = require("express");
 const router = express.Router();
-const auth = require("../middlewares/auth");
+const auth = require("../middleware/auth");
 
 // For testing purposes gets all the users
 router.get("/", auth, async (req, res) => {
