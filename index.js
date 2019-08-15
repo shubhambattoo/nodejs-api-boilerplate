@@ -22,6 +22,8 @@ app.use(express.json());
 app.use("/api/users", users);
 
 const port = env.PORT || 5000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log("Server Started on " + port);
 });
+
+module.exports = server;

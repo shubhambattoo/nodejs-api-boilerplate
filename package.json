@@ -6,6 +6,8 @@
   "author": "shubhambattoo",
   "license": "ISC",
   "scripts": {
+    "start": "node index.js",
+    "debug" : "nodemon",
     "test" : "jest --verbose",
     "test:watch" : "jest --watchAll --verbose"
   },
