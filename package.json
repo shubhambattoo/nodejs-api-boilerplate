@@ -9,6 +9,7 @@
     "start": "node index.js",
     "debug" : "nodemon",
     "test" : "jest --verbose",
+    "test:coverage" : "jest --verbose --coverage",
     "test:watch" : "jest --watchAll --verbose"
   },
   "dependencies": {
