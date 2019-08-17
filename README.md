@@ -1,6 +1,6 @@
 # NodeJS API Boilerplate
 
-Creating NodeJS API with MongoDB
+Creating NodeJS API with MongoDB :tada:
 
 ## Usage
 Clone the repo then go inside the folder and

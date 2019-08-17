@@ -7,14 +7,15 @@
   "license": "ISC",
   "scripts": {
     "start": "node index.js",
-    "debug" : "nodemon",
-    "test" : "jest --verbose",
-    "test:coverage" : "jest --verbose --coverage",
-    "test:watch" : "jest --watchAll --verbose"
+    "debug": "nodemon",
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose --coverage",
+    "test:watch": "jest --watchAll --verbose"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "joi": "^14.3.1",
