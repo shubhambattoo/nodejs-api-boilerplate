@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: 5,
+      minlength: 6,
       maxlength: 1024
     }
   },
@@ -96,7 +96,7 @@ function validate(user) {
       .max(255)
       .email(),
     password: Joi.string()
-      .min(3)
+      .min(6)
       .required()
       .max(1024)
   };
