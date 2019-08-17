@@ -45,11 +45,11 @@ _serves the project in port 5001_
 Jest is being used to test the project
 
 ```cli
-yarn run test
+yarn test
 ```
 
 OR
 
 ```cli
-npm run test
+npm test
 ```
