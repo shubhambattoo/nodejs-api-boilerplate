@@ -3,7 +3,7 @@
 Creating NodeJS API with MongoDB
 
 ## Usage
-
+Clone the repo then go inside the folder and
 Install all the dependencies
 
 ```cli
@@ -38,4 +38,18 @@ OR
 npm start
 ```
 
-serves the project in port 5001
+_serves the project in port 5001_
+
+### For Testing
+
+Jest is being used to test the project
+
+```cli
+yarn run test
+```
+
+OR
+
+```cli
+npm run test
+```
