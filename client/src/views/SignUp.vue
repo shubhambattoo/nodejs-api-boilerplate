@@ -3,17 +3,22 @@
     <section class="section">
       <div class="container">
         <div class="controller">
-          <div class="notification is-danger" id="feedback" v-if="false">
-            <button class="delete"></button>
-            Please fill all the
-            <strong>fields</strong>.
+          <div class="notification is-danger" id="feedback" v-if="feedback">
+            <button class="delete" @click="feedback = null"></button>
+            {{feedback}}
           </div>
           <div class="box">
-            <form>
+            <form @submit.prevent="signUp">
               <div class="field">
                 <label class="label">Name</label>
                 <div class="control">
-                  <input class="input" type="text" id="name" placeholder="e.g Alex Smith" />
+                  <input
+                    class="input"
+                    type="text"
+                    id="name"
+                    v-model="name"
+                    placeholder="e.g Alex Smith"
+                  />
                 </div>
               </div>
               <div class="field">
@@ -23,17 +28,15 @@
                     class="input"
                     type="email"
                     id="email"
+                    v-model="email"
                     placeholder="e.g. alexsmith@gmail.com"
                   />
                 </div>
               </div>
               <div class="field">
                 <label class="label">Password</label>
-                <div class="control has-icons-right">
-                  <input class="input" id="password" type="password" />
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-eye-slash"></i>
-                  </span>
+                <div class="control">
+                  <input class="input" id="password" v-model="password" type="password" />
                 </div>
               </div>
               <div class="field is-grouped is-grouped-centered">
@@ -51,6 +54,68 @@
 
 <script>
 export default {
-  name: "signup"
+  name: "signup",
+  data() {
+    return {
+      showPass: false,
+      name: null,
+      email: null,
+      password: null,
+      feedback: null
+    };
+  },
+  methods: {
+    signUp() {
+      if (!this.email || !this.name || !this.password) {
+        this.feedback = `Please fill all the fields.`;
+      } else {
+        // get all params for API
+        const user = {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        };
+
+        const url = `/api/users`;
+
+        // sign up
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(user)
+        })
+          .then(res => {
+            if (res.status === 201) {
+              return res.json()
+            } else {
+              console.log(res.body);
+              throw new Error(res.body);
+            }
+          })
+          .then(data => {
+            // save data in localstorage
+            console.log(data);
+            localStorage.clear();
+            localStorage.setItem("jwt_token", data.jwt_token);
+            // clean form
+            this.clearForm();
+            // redirect to profile
+            this.$router.push("/profile");
+          })
+          .catch(err => {
+            console.log(err);
+            this.clearForm();
+            this.feedback = `${err}`;
+          });
+      }
+    },
+    clearForm() {
+      this.name = null;
+      this.email = null;
+      this.password = null;
+    }
+  }
 };
 </script>
