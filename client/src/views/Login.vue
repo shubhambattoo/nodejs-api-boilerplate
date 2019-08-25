@@ -1,0 +1,43 @@
+<template>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="controller">
+          <div class="box">
+            <form>
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="input" type="email" placeholder="e.g. alexsmith@gmail.com" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-right">
+                  <input class="input" type="password" />
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-eye-slash"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="field is-grouped is-grouped-centered">
+                <p class="control">
+                  <a class="button is-link">Sign Up</a>
+                </p>
+                <p class="control">
+                  <a class="button">Cancel</a>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
+
+<script>
+export default {
+  name: "login"
+};
+</script>
