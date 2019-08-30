@@ -43,6 +43,9 @@
                 <p class="control">
                   <button class="button is-link" type="submit" id="sign-up">Sign Up</button>
                 </p>
+                <p class="control">
+                  <button type="button" @click="clearForm" class="button">Clear</button>
+                </p>
               </div>
             </form>
           </div>
@@ -53,6 +56,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "signup",
   data() {
@@ -78,25 +83,16 @@ export default {
 
         const url = `/api/users`;
 
-        // sign up
-        fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-          .then(res => {
-            if (res.status === 201) {
-              return res.json()
-            } else {
-              console.log(res.body);
-              throw new Error(res.body);
+        axios
+          .post(url, JSON.stringify(user), {
+            headers: {
+              "Content-Type": "application/json"
             }
           })
+          .then(res => res.data)
           .then(data => {
             // save data in localstorage
-            console.log(data);
+            // console.log(data);
             localStorage.clear();
             localStorage.setItem("jwt_token", data.jwt_token);
             // clean form
@@ -105,9 +101,12 @@ export default {
             this.$router.push("/profile");
           })
           .catch(err => {
-            console.log(err);
+            if(err.response.status === 500) {
+              this.feedback = `ERROR : Internal Server Error`;
+              return;
+            }
             this.clearForm();
-            this.feedback = `${err}`;
+            this.feedback = `ERROR : ${err.response.data}`;
           });
       }
     },
@@ -115,6 +114,7 @@ export default {
       this.name = null;
       this.email = null;
       this.password = null;
+      this.feedback = null;
     }
   }
 };

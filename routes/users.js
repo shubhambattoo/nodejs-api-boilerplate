@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
     let user = await User.findByCredentials(body.email, body.password);
     const token = await user.generateAuthToken();
     user = _.pick(user, ["_id", "name", "email"]);
-    user["jwt-token"] = token;
+    user["jwt_token"] = token;
     res.send(user);
   } catch (error) {
     res.status(404).send("Could not find user");
