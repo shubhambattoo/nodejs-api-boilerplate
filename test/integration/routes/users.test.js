@@ -52,11 +52,7 @@ describe("/api/users", () => {
   });
 
   describe("POST /", () => {
-    let user = {
-      name: "user1",
-      password: "123456",
-      email: "x@y.com"
-    };
+    let user;
 
     const exec = async () => {
       return await request(server)

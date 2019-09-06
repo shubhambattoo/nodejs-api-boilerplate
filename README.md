@@ -22,7 +22,7 @@ Following are the environment variables requied for the project to work properly
 
 1. PORT=5001
 1. DB_HOST=localhost
-1. JWT_PRIVATE_KEY=somescret
+1. JWT_PRIVATE_KEY=somesecret
 1. DB_NAME=your_db_name
 1. NODE_ENV=dev
 
