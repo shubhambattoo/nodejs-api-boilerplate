@@ -55,7 +55,7 @@ export default {
           this.loading = false;
         })
         .catch(() => {
-          alert("Could not find profile data")
+          alert("Could not find profile data");
         })
       }
     }

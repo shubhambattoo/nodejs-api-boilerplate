@@ -20,11 +20,14 @@
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
+            <div class="buttons" v-if="!isLoggedIn">
               <router-link class="button is-link" to="/">
                 <strong>Get Started</strong>
               </router-link>
               <router-link class="button is-light" to="/login">Sign In</router-link>
+            </div>
+            <div class="buttons" v-if="isLoggedIn">
+              <button class="button is-link" @click="logout">Log Out</button>
             </div>
           </div>
         </div>
@@ -35,7 +38,19 @@
 
 <script>
 export default {
-  name : 'appHeader'
+  name: "appHeader",
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$store.dispatch("toggle");
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 

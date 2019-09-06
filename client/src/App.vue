@@ -14,6 +14,9 @@ export default {
   components : {
     Header,
     Footer
+  },
+  created () {
+    this.$store.dispatch("init");
   }
 }
 </script>

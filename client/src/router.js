@@ -1,29 +1,33 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import SignUp from './views/SignUp.vue'
+import Vue from "vue";
+import Router from "vue-router";
+import SignUp from "./views/SignUp.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode : "history",
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'signup',
+      path: "/",
+      name: "signup",
       component: SignUp
     },
     {
-      path: '/login',
-      name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+      path: "/login",
+      name: "login",
+      component: () => import("./views/Login.vue")
     },
     {
-      path : '/profile',
-      name : 'profile',
-      component : () => import(/* webpackChunkName: "about" */ './views/Profile.vue')
+      path: "/profile",
+      name: "profile",
+      component: () => import("./views/Profile.vue"),
+      beforeEnter (to, from , next) {
+        if (localStorage.getItem("jwt_token")) {
+          next()
+        } else {
+          next("/");
+        }
+      }
     }
   ]
-})
+});

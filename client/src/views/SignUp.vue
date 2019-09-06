@@ -97,6 +97,7 @@ export default {
             localStorage.setItem("jwt_token", data.jwt_token);
             // clean form
             this.clearForm();
+            this.$store.dispatch("toggle");
             // redirect to profile
             this.$router.push("/profile");
           })
