@@ -2,6 +2,8 @@
 
 Creating NodeJS API with MongoDB :tada:
 
+![](login.gif)
+
 ## Usage
 Clone the repo then go inside the folder and
 Install all the dependencies
