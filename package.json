@@ -11,7 +11,7 @@
     "test": "jest --verbose",
     "test:coverage": "jest --verbose --coverage",
     "test:watch": "jest --watchAll --verbose",
-    "client" : "yarn run serve --prefix client"
+    "client": "yarn run serve --prefix client"
   },
   "dependencies": {
     "bcrypt": "^3.0.6",
